@@ -17,4 +17,6 @@ repos:
     rev: ''  # Use the sha / tag you want to point at
     hooks:
       - id: pngquant
+        args: # these are optional
+          - '--speed 1'
 ```

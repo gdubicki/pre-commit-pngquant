@@ -10,14 +10,14 @@
 
 tmpfile=$(mktemp)
 
-pngquant --force --verbose --ext .png --skip-if-larger "$1" 2>&1 | tee "$tmpfile"
+pngquant --verbose --force --ext .png --skip-if-larger "$@" 2>&1 | tee "$tmpfile"
 
 exit_code=${PIPESTATUS[0]}
 
 if [[ $exit_code -eq 0 ]] && grep -qs 'Quantized 1 image.' "$tmpfile" ; then
   wrapped_exit_code=1
 fi
-if [[ $exit_code -ne 0 ]] && grep -qs 'Skipped 1 file out of a total of 1 file.' "$tmpfile" ; then
+if [[ $exit_code -ne 0 ]] && grep -qs 'Skipped \d+ files out of a total of \d+ files.' "$tmpfile" ; then
   wrapped_exit_code=0
 fi
 
