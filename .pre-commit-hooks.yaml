@@ -1,5 +1,5 @@
 -   id: pngquant
-    name: oxipng
+    name: pngquant
     description: 'Lossy compression of PNG images using pngquant'
     entry: pngquant-wrapper.sh
     language: script
